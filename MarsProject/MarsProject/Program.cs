@@ -25,7 +25,7 @@ internal class Program
         // Click login button
         IWebElement loginButton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
         loginButton.Click();
-        Thread.Sleep(9000);
+        Thread.Sleep(6000);
         // Check if the user lob in successfully
         IWebElement sanalJacob = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[2]/div/div/div[1]"));
         if(sanalJacob.Text == "Sanal Jacob")
@@ -37,6 +37,36 @@ internal class Program
         {
             Console.WriteLine("User has not log in");
         }
+
+        // Validate profile picture 
+        //IWebElement profilePicture = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[1]"));
+        //profilePicture.Click();
+
+
+        // EDIT NAME
+        // Select dropdown list
+        IWebElement dropdownButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[2]/div/div/div[1]/i"));
+        dropdownButton.Click();
+        // change last name
+        IWebElement lastnameTextbox = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[2]/div/div/div[2]/div/div[1]/input[2]"));
+        lastnameTextbox.Clear();
+        lastnameTextbox.SendKeys("Anju");
+        IWebElement saveButton = driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[2]/div/div/div/div/div/div[2]/div/div/div[2]/div/div[2]/button"));
+        saveButton.Click();
+
+        //Checking editing function
+        if(lastnameTextbox.Text == "Anju")
+        {
+            Console.WriteLine("Editing functionality working successfully");
+        }
+        else
+        {
+            Console.WriteLine("Editing functionality failed");
+        }
+
+        //SELECT COUNTRY
+
+
 
 
     }
